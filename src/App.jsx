@@ -7,7 +7,7 @@ import { MdDelete } from "react-icons/md";
 function App() {
   const [todo, setTodo] = useState("")
   const [todos, setTodos] = useState([])
-  const [showFinished, setshowFinished ] = useState(true)
+  const [showFinished, setshowFinished] = useState(true)
 
   useEffect(() => {
     let todoString = localStorage.getItem("todos")
@@ -21,7 +21,7 @@ function App() {
     localStorage.setItem("todos", JSON.stringify(todos))
   }
 
-  const toggleFinished=(e)=>{
+  const toggleFinished = (e) => {
     setshowFinished(!showFinished)
   }
 
@@ -68,15 +68,17 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className="container mx-auto my-6 bg-teal-100 px-4 py-3 rounded-xl min-h-[80vh] lg:w-1/2 w-full">
+      <div className="container mx-auto my-6 bg-teal-100 px-4 py-3 rounded-xl min-h-[80vh] xl:w-1/2 w-full">
         <h1 className='font-bold text-2xl text-center'>iTask - Manage your todos at one place</h1>
         <div className="addTodo mt-5 mb-3 flex flex-col gap-3">
           <h2 className='font-bold text-lg'>Add a Todo</h2>
-          <input onChange={handleChange} value={todo} type="text" className='outline-0 w-full rounded-lg py-1 px-4' placeholder='Enter your Task' />
-          <button onClick={handleAdd} disabled={todo.length<3} className='bg-teal-900 hover:bg-teal-950 disabled:bg-teal-800 text-white px-3 py-1 rounded-md font-bold text-sm mx-6 cursor-pointer'>Save</button>
+          <div className="flex">
+            <input onChange={handleChange} value={todo} type="text" className='outline-0 w-full rounded-lg py-1 px-4' placeholder='Enter your Task' />
+            <button onClick={handleAdd} disabled={todo.length < 3} className='bg-teal-900 hover:bg-teal-950 disabled:bg-teal-600 text-white px-3 py-1 rounded-md font-bold text-sm mx-3 cursor-pointer'>Save</button>
+          </div>
         </div>
 
-        <input onClick={toggleFinished} type="checkbox" checked={showFinished} className='my-4'/> Show Finished
+        <input onClick={toggleFinished} type="checkbox" checked={showFinished} className='my-4' /> Show Finished
 
         <h2 className='font-bold text-lg'>Your Todos</h2>
 
